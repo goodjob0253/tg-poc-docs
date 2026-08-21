@@ -1,0 +1,27 @@
+---
+id: ART-REQ-REFUND
+title: 환불 API 오류 처리 요구사항
+artifact_type: REQUIREMENT
+version: "1.0"
+status: WORKING
+system: Order Platform
+owner: 주문서비스팀
+---
+
+# 환불 API 오류 처리 요구사항
+
+## REQ-REFUND-409 중복 환불 방지
+
+이미 환불이 완료되었거나 환불 처리가 진행 중인 주문에 대해 다시 환불을 요청하면 시스템은 중복 처리를 방지해야 한다.
+
+### 수용 기준
+
+- 환불 완료 주문에 대한 재요청은 HTTP 409를 반환한다.
+- 응답에는 `REFUND_ALREADY_PROCESSED` 오류 코드를 포함한다.
+- 환불 처리 중인 주문에 대한 재요청도 동일한 정책을 적용한다.
+- 중복 환불 요청은 새로운 환불 거래를 생성하지 않는다.
+
+### 관련 산출물
+
+- 상세 설계: `deliverables/design/refund-api.md`
+- API 명세: `deliverables/resources/refund-api.yaml`
