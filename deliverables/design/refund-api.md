@@ -1,7 +1,7 @@
 ---
 id: ART-DES-REFUND-API
 title: 환불 API 상세 설계
-artifact_type: DESIGN
+type: design
 version: "1.0"
 status: WORKING
 system: Order Platform
