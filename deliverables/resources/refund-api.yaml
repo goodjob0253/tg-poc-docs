@@ -1,0 +1,60 @@
+openapi: 3.0.3
+
+info:
+  title: Order Platform Refund API
+  version: 1.0.0
+
+paths:
+  /orders/{orderId}/refund:
+    post:
+      operationId: requestRefund
+      summary: 주문 환불 요청
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 환불 요청 처리 완료
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefundResponse"
+        "409":
+          description: 이미 처리되었거나 처리 중인 환불 요청
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: REFUND_ALREADY_PROCESSED
+                message: 이미 처리되었거나 처리 중인 환불 요청입니다.
+
+components:
+  schemas:
+    RefundResponse:
+      type: object
+      required:
+        - refundId
+        - status
+      properties:
+        refundId:
+          type: string
+        status:
+          type: string
+          enum:
+            - PROCESSING
+            - COMPLETED
+
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
