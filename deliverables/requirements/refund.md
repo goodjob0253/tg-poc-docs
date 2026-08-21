@@ -1,7 +1,7 @@
 ---
 id: ART-REQ-REFUND
 title: 환불 API 오류 처리 요구사항
-artifact_type: REQUIREMENT
+type: requirement
 version: "1.0"
 status: WORKING
 system: Order Platform
