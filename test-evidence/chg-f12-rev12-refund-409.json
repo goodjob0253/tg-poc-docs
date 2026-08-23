@@ -1,0 +1,43 @@
+{
+  "schema": "tracegate-test-evidence/v1",
+  "evidence_id": "CHG-F12-REV12-TEST-001",
+  "change_key": "CHG-F12-REV12",
+  "execution_type": "DETERMINISTIC_POC_FIXTURE",
+  "environment": "tracegate-poc",
+  "test_artifact": {
+    "artifact_key": "TEST-REFUND-012",
+    "artifact_version_id": "0198f4f0-0000-7000-8000-00000000b003"
+  },
+  "subject_artifact": {
+    "artifact_key": "ART-2-1",
+    "artifact_version_id": "e2222520-2ea8-4fec-b5a0-4ec538372bb3",
+    "source_commit_sha": "d2221250c11173ff9740f6e9d3bc30cc62436eac"
+  },
+  "result": "PASS",
+  "assertions": [
+    {
+      "id": "REFUND-COMPLETED-409",
+      "result": "PASS",
+      "description": "환불 완료 주문의 중복 요청은 HTTP 409와 REFUND_ALREADY_PROCESSED를 반환한다."
+    },
+    {
+      "id": "REFUND-IN-PROGRESS-409",
+      "result": "PASS",
+      "description": "환불 처리 중 주문의 중복 요청에도 동일한 충돌 정책을 적용한다."
+    },
+    {
+      "id": "REFUND-NO-DUPLICATE-TRANSACTION",
+      "result": "PASS",
+      "description": "중복 요청은 새로운 환불 거래를 생성하지 않는다."
+    },
+    {
+      "id": "REFUND-FIRST-REQUEST-UNCHANGED",
+      "result": "PASS",
+      "description": "정상적인 최초 환불 요청의 기존 처리 방식은 유지된다."
+    }
+  ],
+  "limitations": [
+    "실제 주문 플랫폼 CI 실행 결과가 아니라 TraceGate POC의 결정론적 검증 데이터셋이다.",
+    "운영 채택 전 실제 API 통합 테스트 실행 증적으로 대체해야 한다."
+  ]
+}
