@@ -2,7 +2,7 @@
 id: ART-REQ-REFUND
 title: 환불 API 오류 처리 요구사항
 type: requirement
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: Order Platform
 owner: 주문서비스팀
@@ -20,6 +20,8 @@ owner: 주문서비스팀
 - 응답에는 `REFUND_ALREADY_PROCESSED` 오류 코드를 포함한다.
 - 환불 처리 중인 주문에 대한 재요청도 동일한 정책을 적용한다.
 - 중복 환불 요청은 새로운 환불 거래를 생성하지 않는다.
+- HTTP 409 응답을 받은 호출자는 주문의 기존 환불 상태를 조회할 수 있어야 한다.
+- 정상적인 최초 환불 요청의 기존 처리 방식은 변경하지 않는다.
 
 ### 관련 산출물
 
