@@ -1,32 +1,37 @@
 ---
 id: ART-REQ-REFUND
-title: 환불 API 오류 처리 요구사항
 type: requirement
-version: "1.2"
+title: 환불 API 오류 처리 요구사항
+description: 중복 환불 요청을 HTTP 409로 응답하고 기존 처리 결과를 보존한다.
+version: "1.3"
 status: WORKING
 system: Order Platform
 owner: 주문서비스팀
+tags:
+  - order
+  - refund
+  - api
+resources:
+  - resources/refund-api.yaml
 ---
+
 # 환불 API 오류 처리 요구사항
 
-## REQ-REFUND-409 중복 환불 방지
+## REQ-REFUND-409 중복 환불 요청 충돌 응답
 
-이미 환불이 완료되었거나 환불 처리가 진행 중인 주문에 대해 다시 환불을 요청하면 시스템은 중복 처리를 방지해야 한다.
+동일한 멱등키로 이미 처리 중이거나 완료된 환불 요청이 다시 접수되면 HTTP 409 Conflict로 응답한다.
 
-### 수용 기준
+### 업무 규칙
 
-- 환불 완료 주문에 대한 재요청은 HTTP 409를 반환한다.
-- 응답에는 `REFUND_ALREADY_PROCESSED` 오류 코드를 포함한다.
-- 환불 처리 중인 주문에 대한 재요청도 동일한 정책을 적용한다.
-- 중복 환불 요청은 새로운 환불 거래를 생성하지 않는다.
-- HTTP 409 응답을 받은 호출자는 주문의 기존 환불 상태를 조회할 수 있어야 한다.
-- 정상적인 최초 환불 요청의 기존 처리 방식은 변경하지 않는다.
+- 중복 요청에서는 새로운 환불 거래를 생성하지 않는다.
+- 응답 본문은 오류 코드 `REFUND_ALREADY_PROCESSED`를 포함한다.
+- 최초 환불 요청의 기존 HTTP 200 계약은 유지한다.
+- 호출 시스템은 HTTP 409 수신 후 재시도하지 않고 기존 환불 상태를 조회한다.
 
-### 변경관리 기준
+### 수용 조건
 
-- 본 요구사항의 변경 이력은 기본 브랜치에 머지된 commit을 기준으로 추적한다.
-
-### 관련 산출물
-
-- 상세 설계: `deliverables/design/refund-api.md`
-- API 명세: `deliverables/resources/refund-api.yaml`
+| ID | 조건 | 기대 결과 |
+| --- | --- | --- |
+| AC-REFUND-409-01 | 완료된 환불과 동일한 멱등키로 재요청 | HTTP 409와 `REFUND_ALREADY_PROCESSED` 반환 |
+| AC-REFUND-409-02 | 처리 중인 환불과 동일한 멱등키로 재요청 | 새 거래 없이 HTTP 409 반환 |
+| AC-REFUND-409-03 | 최초 멱등키로 환불 요청 | 기존 HTTP 200 정상 처리 유지 |
