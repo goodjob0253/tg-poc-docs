@@ -3,7 +3,7 @@ id: ART-REQ-REFUND
 type: requirement
 title: 환불 API 오류 처리 요구사항
 description: 중복 환불 요청을 HTTP 409로 응답하고 기존 처리 결과를 보존한다.
-version: "1.3"
+version: "1.4"
 status: WORKING
 system: Order Platform
 owner: 주문서비스팀
@@ -35,3 +35,7 @@ resources:
 | AC-REFUND-409-01 | 완료된 환불과 동일한 멱등키로 재요청 | HTTP 409와 `REFUND_ALREADY_PROCESSED` 반환 |
 | AC-REFUND-409-02 | 처리 중인 환불과 동일한 멱등키로 재요청 | 새 거래 없이 HTTP 409 반환 |
 | AC-REFUND-409-03 | 최초 멱등키로 환불 요청 | 기존 HTTP 200 정상 처리 유지 |
+
+### 변경 이력
+
+- 2026-08-25: Rev.16 Golden Path에서 주문·결제·정산 연계 추적 경로를 재검증했다.

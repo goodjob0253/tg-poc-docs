@@ -1,0 +1,30 @@
+{
+  "schema": "tracegate-test-evidence/v1",
+  "evidence_id": "CHG-F12-REV16-TEST-001",
+  "change_key": "CHG-F12-REV16",
+  "execution_type": "DETERMINISTIC_POC_FIXTURE",
+  "environment": "tracegate-poc",
+  "result": "PASS",
+  "systems": ["주문", "결제", "정산"],
+  "assertions": [
+    {
+      "id": "ORDER-REFUND-409",
+      "result": "PASS",
+      "description": "주문 시스템은 중복 환불 요청에 HTTP 409와 REFUND_ALREADY_PROCESSED를 반환한다."
+    },
+    {
+      "id": "PAYMENT-NO-DUPLICATE-CANCEL",
+      "result": "PASS",
+      "description": "결제 시스템은 중복 환불 응답에서 추가 결제 취소를 수행하지 않는다."
+    },
+    {
+      "id": "SETTLEMENT-NO-DUPLICATE-ENTRY",
+      "result": "PASS",
+      "description": "정산 시스템은 동일 환불 식별자의 취소 분개를 중복 생성하지 않는다."
+    }
+  ],
+  "limitations": [
+    "실제 운영 CI 결과가 아닌 TraceGate POC의 결정론적 Golden Path 데이터셋이다.",
+    "운영 채택 전 시스템별 실제 테스트 실행 증적으로 대체해야 한다."
+  ]
+}

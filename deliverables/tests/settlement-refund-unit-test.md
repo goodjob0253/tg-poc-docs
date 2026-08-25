@@ -3,7 +3,7 @@ id: ART-TEST-SETTLEMENT-REFUND
 type: test
 title: 정산 시스템 환불 중복 반영 단위테스트 케이스
 description: 동일 환불의 취소 분개 중복 생성 방지를 검증한다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 정산 시스템
 owner: 정산서비스팀
@@ -37,3 +37,6 @@ tags:
 - 세 테스트가 모두 통과한다.
 - 동시 요청 검증에서 최종 취소 분개 수가 1건임을 TestEvidence에 포함한다.
 
+### 실행 이력
+
+- 2026-08-25: Rev.16 Golden Path 결정론적 데이터셋에서 전체 케이스 PASS를 확인했다.

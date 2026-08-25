@@ -3,7 +3,7 @@ id: ART-TEST-PAYMENT-REFUND
 type: test
 title: 결제 시스템 환불 중복 응답 단위테스트 케이스
 description: 중복 환불 응답 수용과 결제 취소 중복 방지를 검증한다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 결제 시스템
 owner: 결제서비스팀
@@ -37,3 +37,6 @@ tags:
 - 세 테스트가 모두 통과한다.
 - 추가 결제 취소 호출이 0건임을 TestEvidence에 포함한다.
 
+### 실행 이력
+
+- 2026-08-25: Rev.16 Golden Path 결정론적 데이터셋에서 전체 케이스 PASS를 확인했다.

@@ -3,7 +3,7 @@ id: ART-DES-REFUND-API
 type: design
 title: 환불 API 상세 설계
 description: 멱등키로 중복 환불을 판별하고 일관된 HTTP 409 오류 계약을 제공한다.
-version: "1.1"
+version: "1.2"
 status: WORKING
 system: Order Platform
 owner: 주문서비스팀
@@ -40,3 +40,7 @@ resources:
 | 정상 응답 | HTTP 200 |
 | 중복 응답 | HTTP 409 |
 | 오류 코드 | `REFUND_ALREADY_PROCESSED` |
+
+### 변경 이력
+
+- 2026-08-25: Rev.16 요구사항과 단위테스트의 명시적 연결을 재검증했다.

@@ -3,7 +3,7 @@ id: ART-REQ-PAYMENT-REFUND
 type: requirement
 title: 결제 시스템 환불 중복 응답 처리 요구사항
 description: 주문 시스템의 중복 환불 응답을 수용하고 결제 취소를 중복 수행하지 않는다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 결제 시스템
 owner: 결제서비스팀
@@ -33,3 +33,6 @@ tags:
 | AC-PAYMENT-409-01 | 주문 시스템이 중복 환불 오류 반환 | 추가 결제 취소 없이 기존 상태 조회 |
 | AC-PAYMENT-409-02 | 다른 오류 코드의 HTTP 409 반환 | 일반 오류 처리 및 확인 필요 기록 |
 
+### 변경 이력
+
+- 2026-08-25: Rev.16 Golden Path에서 요구사항·설계·테스트 추적 경로를 재검증했다.

@@ -3,7 +3,7 @@ id: ART-REQ-SETTLEMENT-REFUND
 type: requirement
 title: 정산 시스템 환불 중복 반영 방지 요구사항
 description: 중복 환불 응답으로 동일 정산 취소가 다시 반영되지 않게 한다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 정산 시스템
 owner: 정산서비스팀
@@ -33,3 +33,6 @@ tags:
 | AC-SETTLEMENT-409-01 | 기존 취소 분개 존재 | 추가 분개 없이 기존 처리 결과 반환 |
 | AC-SETTLEMENT-409-02 | 기존 취소 분개 없음 | 정상 취소 반영 절차 수행 |
 
+### 변경 이력
+
+- 2026-08-25: Rev.16 Golden Path에서 요구사항·설계·테스트 추적 경로를 재검증했다.

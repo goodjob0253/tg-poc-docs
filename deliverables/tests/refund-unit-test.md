@@ -3,7 +3,7 @@ id: ART-TEST-ORDER-REFUND
 type: test
 title: 주문 시스템 환불 단위테스트 케이스
 description: 중복 환불의 HTTP 409 계약과 최초 요청 회귀를 검증한다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 주문 시스템
 owner: 주문서비스팀
@@ -37,3 +37,6 @@ tags:
 - 세 테스트가 모두 통과한다.
 - 테스트 실행 결과는 실제 commit SHA와 함께 TestEvidence로 등록한다.
 
+### 실행 이력
+
+- 2026-08-25: Rev.16 Golden Path 결정론적 데이터셋에서 전체 케이스 PASS를 확인했다.

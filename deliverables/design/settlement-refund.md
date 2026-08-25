@@ -3,7 +3,7 @@ id: ART-DES-SETTLEMENT-REFUND
 type: design
 title: 정산 시스템 환불 중복 반영 프로그램설계서
 description: 환불 식별자 기반으로 취소 분개 중복 생성을 방지한다.
-version: "1.0"
+version: "1.1"
 status: WORKING
 system: 정산 시스템
 owner: 정산서비스팀
@@ -36,3 +36,6 @@ tags:
 - 주문·환불 식별자 조합은 취소 분개의 중복 방지 키로 사용한다.
 - 동시 요청에서도 취소 분개는 최대 한 건만 생성되어야 한다.
 
+### 변경 이력
+
+- 2026-08-25: Rev.16 요구사항과 단위테스트의 명시적 연결을 재검증했다.
